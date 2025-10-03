@@ -1,0 +1,125 @@
+<div class="form-container">
+  <div class="form-card">
+    <header class="form-header">
+      <h1>{{ isEditMode ? '✏️ Edit User' : '➕ Create New User' }}</h1>
+      <p>{{ isEditMode ? 'Update user details below' : 'Fill in the details to create a new user' }}</p>
+    </header>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          class="form-control"
+          placeholder="user@example.com"
+          [class.invalid]="f['email'].invalid && f['email'].touched"
+        />
+        <div class="error-message" *ngIf="f['email'].invalid && f['email'].touched">
+          <span *ngIf="f['email'].errors?.['required']">Email is required</span>
+          <span *ngIf="f['email'].errors?.['email']">Please enter a valid email address</span>
+        </div>
+      </div>
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username">Username <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="username" 
+          formControlName="username" 
+          class="form-control"
+          placeholder="Enter username"
+          [class.invalid]="f['username'].invalid && f['username'].touched"
+        />
+        <div class="error-message" *ngIf="f['username'].invalid && f['username'].touched">
+          <span *ngIf="f['username'].errors?.['required']">Username is required</span>
+          <span *ngIf="f['username'].errors?.['minlength']">Username must be at least 3 characters</span>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">
+          Password 
+          <span class="required" *ngIf="!isEditMode">*</span>
+          <span class="optional-text" *ngIf="isEditMode">(leave blank to keep current)</span>
+        </label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          class="form-control"
+          [placeholder]="isEditMode ? 'Leave blank to keep current password' : 'Enter password (min 6 characters)'"
+          [class.invalid]="f['password'].invalid && f['password'].touched"
+        />
+        <div class="error-message" *ngIf="f['password'].invalid && f['password'].touched">
+          <span *ngIf="f['password'].errors?.['required']">Password is required</span>
+          <span *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <!-- Full Name Field -->
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input 
+          type="text" 
+          id="full_name" 
+          formControlName="full_name" 
+          class="form-control"
+          placeholder="Enter full name (optional)"
+        />
+      </div>
+
+      <!-- Status Checkboxes -->
+      <div class="form-row">
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input 
+              type="checkbox" 
+              formControlName="is_active"
+              class="checkbox-input"
+            />
+            <span class="checkbox-text">✓ Active User</span>
+          </label>
+          <small class="help-text">Allow this user to access the system</small>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input 
+              type="checkbox" 
+              formControlName="is_superuser"
+              class="checkbox-input"
+            />
+            <span class="checkbox-text">👑 Administrator</span>
+          </label>
+          <small class="help-text">Grant admin privileges</small>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button 
+          type="button" 
+          class="btn-secondary" 
+          (click)="onCancel()"
+          [disabled]="isSubmitting"
+        >
+          Cancel
+        </button>
+        <button 
+          type="submit" 
+          class="btn-primary" 
+          [disabled]="userForm.invalid || isSubmitting"
+        >
+          <span *ngIf="!isSubmitting">{{ isEditMode ? 'Update User' : 'Create User' }}</span>
+          <span *ngIf="isSubmitting">⏳ Saving...</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
@@ -15,7 +16,7 @@ import { User } from '../../models/user.model';
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush

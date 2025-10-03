@@ -1,7 +1,14 @@
 <div class="user-list-container">
   <header class="page-header">
-    <h1>👥 User Management</h1>
-    <p>View all users in the system</p>
+    <div class="header-content">
+      <div>
+        <h1>👥 User Management</h1>
+        <p>View all users in the system</p>
+      </div>
+      <button class="btn-primary" routerLink="/users/new">
+        <span>➕</span> Create User
+      </button>
+    </div>
   </header>
 
   <div class="users-grid" *ngIf="users$ | async as users">

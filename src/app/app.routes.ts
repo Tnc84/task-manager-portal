@@ -3,6 +3,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 /**
  * Application Routes
@@ -35,6 +36,16 @@ export const routes: Routes = [
     path: 'tasks/edit/:id',
     component: TaskFormComponent,
     title: 'Edit Task - Task Manager'
+  },
+  {
+    path: 'users/new',
+    component: UserFormComponent,
+    title: 'Create User - Task Manager'
+  },
+  {
+    path: 'users/edit/:id',
+    component: UserFormComponent,
+    title: 'Edit User - Task Manager'
   },
   {
     path: 'users',
