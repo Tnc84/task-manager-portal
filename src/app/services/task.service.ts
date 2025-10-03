@@ -43,7 +43,7 @@ export class TaskService {
    * Get a single task by ID
    */
   getTaskById(id: number): Observable<Task> {
-    return this.http.get<Task>(`${this.apiUrl}/${id}`);
+    return this.http.get<Task>(`${this.apiUrl}${id}`);
   }
 
   /**
@@ -59,7 +59,7 @@ export class TaskService {
    * Update an existing task
    */
   updateTask(id: number, task: TaskUpdate): Observable<Task> {
-    return this.http.put<Task>(`${this.apiUrl}/${id}`, task).pipe(
+    return this.http.put<Task>(`${this.apiUrl}${id}`, task).pipe(
       tap(() => this.refreshTasks())
     );
   }
@@ -68,7 +68,7 @@ export class TaskService {
    * Delete a task
    */
   deleteTask(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}${id}`).pipe(
       tap(() => this.refreshTasks())
     );
   }

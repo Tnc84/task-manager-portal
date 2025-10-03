@@ -42,7 +42,7 @@ export class UserService {
    * Get a single user by ID
    */
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${id}`);
+    return this.http.get<User>(`${this.apiUrl}${id}`);
   }
 
   /**
@@ -58,7 +58,7 @@ export class UserService {
    * Update an existing user
    */
   updateUser(id: number, user: UserUpdate): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/${id}`, user).pipe(
+    return this.http.put<User>(`${this.apiUrl}${id}`, user).pipe(
       tap(() => this.refreshUsers())
     );
   }
@@ -67,7 +67,7 @@ export class UserService {
    * Delete a user
    */
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}${id}`).pipe(
       tap(() => this.refreshUsers())
     );
   }

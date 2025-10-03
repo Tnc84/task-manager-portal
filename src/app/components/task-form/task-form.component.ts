@@ -68,22 +68,33 @@ export class TaskFormComponent implements OnInit {
    * Load task data for editing
    */
   private loadTask(id: number): void {
-    this.taskService.getTaskById(id).subscribe(task => {
-      // Convert date to datetime-local format
-      let dueDate = '';
-      if (task.due_date) {
-        const date = new Date(task.due_date);
-        dueDate = date.toISOString().slice(0, 16);
-      }
+    this.taskService.getTaskById(id).subscribe({
+      next: (task) => {
+        console.log('✅ Task loaded for editing:', task);
+        
+        // Convert date to datetime-local format
+        let dueDate = '';
+        if (task.due_date) {
+          const date = new Date(task.due_date);
+          dueDate = date.toISOString().slice(0, 16);
+        }
 
-      this.taskForm.patchValue({
-        title: task.title,
-        description: task.description,
-        priority: task.priority,
-        due_date: dueDate,
-        owner_id: task.owner_id,
-        is_completed: task.is_completed
-      });
+        this.taskForm.patchValue({
+          title: task.title,
+          description: task.description,
+          priority: task.priority,
+          due_date: dueDate,
+          owner_id: task.owner_id,
+          is_completed: task.is_completed
+        });
+        
+        console.log('✅ Form values after patch:', this.taskForm.value);
+      },
+      error: (error) => {
+        console.error('❌ Error loading task:', error);
+        alert('Failed to load task: ' + (error.error?.detail || error.message || 'Unknown error'));
+        this.router.navigate(['/tasks']);
+      }
     });
   }
 
