@@ -7,8 +7,8 @@ export const API_CONFIG = {
   baseUrl: 'http://localhost:8000',
   apiPrefix: '/api/v1',
   endpoints: {
-    users: '/users',
-    tasks: '/tasks',
+    users: '/users/',
+    tasks: '/tasks/',
   },
 } as const;
 

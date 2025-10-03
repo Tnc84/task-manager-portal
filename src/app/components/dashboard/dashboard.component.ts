@@ -58,8 +58,22 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialize data loading
-    this.taskService.getTasks().subscribe();
-    this.userService.getUsers().subscribe();
+    this.taskService.getTasks().subscribe({
+      next: (tasks) => {
+        console.log('✅ Dashboard: Tasks loaded:', tasks);
+      },
+      error: (error) => {
+        console.error('❌ Dashboard: Error loading tasks:', error);
+      }
+    });
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        console.log('✅ Dashboard: Users loaded:', users);
+      },
+      error: (error) => {
+        console.error('❌ Dashboard: Error loading users:', error);
+      }
+    });
   }
 }
 

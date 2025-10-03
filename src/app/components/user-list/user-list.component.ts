@@ -28,7 +28,15 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe();
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        console.log('✅ Users loaded successfully:', users);
+      },
+      error: (error) => {
+        console.error('❌ Error loading users:', error);
+        alert('Failed to load users: ' + (error.message || 'Unknown error'));
+      }
+    });
   }
 
   /**
