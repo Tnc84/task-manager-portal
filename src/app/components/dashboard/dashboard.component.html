@@ -1,0 +1,101 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>📋 Task Manager Dashboard</h1>
+    <p>Welcome to your task management portal</p>
+  </header>
+
+  <!-- Statistics Cards -->
+  <div class="stats-grid" *ngIf="stats$ | async as stats">
+    <div class="stat-card stat-card-primary">
+      <div class="stat-icon">📊</div>
+      <div class="stat-content">
+        <h3>{{ stats.totalTasks }}</h3>
+        <p>Total Tasks</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-card-success">
+      <div class="stat-icon">✅</div>
+      <div class="stat-content">
+        <h3>{{ stats.completedTasks }}</h3>
+        <p>Completed</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-card-warning">
+      <div class="stat-icon">⏳</div>
+      <div class="stat-content">
+        <h3>{{ stats.pendingTasks }}</h3>
+        <p>Pending</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-card-danger">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-content">
+        <h3>{{ stats.highPriorityTasks }}</h3>
+        <p>High Priority</p>
+      </div>
+    </div>
+
+    <div class="stat-card stat-card-info">
+      <div class="stat-icon">👥</div>
+      <div class="stat-content">
+        <h3>{{ stats.totalUsers }}</h3>
+        <p>Active Users</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <h2>Quick Actions</h2>
+    <div class="actions-grid">
+      <button class="action-btn action-btn-primary" routerLink="/tasks/new">
+        <span class="btn-icon">➕</span>
+        <span>Create New Task</span>
+      </button>
+      <button class="action-btn action-btn-secondary" routerLink="/tasks">
+        <span class="btn-icon">📝</span>
+        <span>View All Tasks</span>
+      </button>
+      <button class="action-btn action-btn-tertiary" routerLink="/users">
+        <span class="btn-icon">👤</span>
+        <span>Manage Users</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Recent Tasks Preview -->
+  <div class="recent-tasks">
+    <div class="section-header">
+      <h2>Recent Tasks</h2>
+      <a routerLink="/tasks" class="view-all-link">View All →</a>
+    </div>
+    
+    <div class="tasks-preview" *ngIf="tasks$ | async as tasks">
+      <div class="task-item" *ngFor="let task of tasks.slice(0, 5)">
+        <div class="task-status" [class.completed]="task.is_completed">
+          {{ task.is_completed ? '✓' : '○' }}
+        </div>
+        <div class="task-details">
+          <h4 [class.completed-text]="task.is_completed">{{ task.title }}</h4>
+          <p>{{ task.description || 'No description' }}</p>
+        </div>
+        <div class="task-meta">
+          <span class="priority-badge" [class]="'priority-' + task.priority">
+            {{ task.priority }}
+          </span>
+          <span class="due-date" *ngIf="task.due_date">
+            📅 {{ task.due_date | date: 'short' }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="empty-state" *ngIf="tasks.length === 0">
+        <p>No tasks yet. Create your first task to get started!</p>
+      </div>
+    </div>
+  </div>
+</div>
+

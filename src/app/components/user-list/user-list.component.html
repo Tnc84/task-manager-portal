@@ -1,0 +1,53 @@
+<div class="user-list-container">
+  <header class="page-header">
+    <h1>👥 User Management</h1>
+    <p>View all users in the system</p>
+  </header>
+
+  <div class="users-grid" *ngIf="users$ | async as users">
+    <div class="user-card" *ngFor="let user of users">
+      <div class="user-avatar">
+        <div class="avatar-circle" [class.admin]="user.is_superuser">
+          {{ getDisplayName(user).charAt(0).toUpperCase() }}
+        </div>
+      </div>
+      
+      <div class="user-info">
+        <div class="user-header">
+          <h3>{{ getDisplayName(user) }}</h3>
+          <span class="role-badge" [class.admin]="user.is_superuser">
+            {{ getRoleBadge(user) }}
+          </span>
+        </div>
+        
+        <div class="user-details">
+          <div class="detail-row">
+            <span class="label">📧 Email:</span>
+            <span class="value">{{ user.email }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">👤 Username:</span>
+            <span class="value">{{ user.username }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">📅 Joined:</span>
+            <span class="value">{{ user.created_at | date: 'medium' }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Status:</span>
+            <span class="status-badge" [class.active]="user.is_active">
+              {{ user.is_active ? '✓ Active' : '✗ Inactive' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="users.length === 0">
+      <div class="empty-icon">👥</div>
+      <h3>No users found</h3>
+      <p>There are no users in the system yet.</p>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,118 @@
+<div class="task-list-container">
+  <header class="page-header">
+    <h1>📝 All Tasks</h1>
+    <button class="btn-primary" routerLink="/tasks/new">
+      <span>➕</span> Create Task
+    </button>
+  </header>
+
+  <!-- Filters Section -->
+  <div class="filters-section">
+    <div class="filter-group">
+      <label>Search:</label>
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (ngModelChange)="applyFilters()"
+        placeholder="Search tasks..."
+        class="filter-input"
+      />
+    </div>
+
+    <div class="filter-group">
+      <label>Status:</label>
+      <select 
+        [(ngModel)]="filterStatus" 
+        (ngModelChange)="applyFilters()"
+        class="filter-select"
+      >
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Priority:</label>
+      <select 
+        [(ngModel)]="filterPriority" 
+        (ngModelChange)="applyFilters()"
+        class="filter-select"
+      >
+        <option value="all">All</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tasks Grid -->
+  <div class="tasks-grid" *ngIf="filteredTasks$ | async as tasks">
+    <div class="task-card" *ngFor="let task of tasks" [class.completed]="task.is_completed">
+      <div class="task-header">
+        <div class="task-checkbox">
+          <input 
+            type="checkbox" 
+            [checked]="task.is_completed"
+            (change)="toggleComplete(task)"
+            id="task-{{task.id}}"
+          />
+          <label for="task-{{task.id}}"></label>
+        </div>
+        <span class="priority-badge" [class]="'priority-' + task.priority">
+          {{ task.priority }}
+        </span>
+      </div>
+
+      <div class="task-body">
+        <h3 [class.completed-text]="task.is_completed">{{ task.title }}</h3>
+        <p *ngIf="task.description">{{ task.description }}</p>
+      </div>
+
+      <div class="task-footer">
+        <div class="task-info">
+          <span *ngIf="task.due_date" class="due-date" 
+                [class.overdue]="getDaysUntilDue(task.due_date)! < 0"
+                [class.due-soon]="getDaysUntilDue(task.due_date)! >= 0 && getDaysUntilDue(task.due_date)! <= 3">
+            📅 
+            <ng-container *ngIf="getDaysUntilDue(task.due_date)! < 0">
+              Overdue
+            </ng-container>
+            <ng-container *ngIf="getDaysUntilDue(task.due_date)! === 0">
+              Due today
+            </ng-container>
+            <ng-container *ngIf="getDaysUntilDue(task.due_date)! > 0">
+              Due in {{ getDaysUntilDue(task.due_date) }} days
+            </ng-container>
+          </span>
+          <span class="owner-id">👤 Owner: {{ task.owner_id }}</span>
+        </div>
+        <div class="task-actions">
+          <button 
+            class="btn-icon" 
+            [routerLink]="['/tasks/edit', task.id]"
+            title="Edit task"
+          >
+            ✏️
+          </button>
+          <button 
+            class="btn-icon btn-danger" 
+            (click)="deleteTask(task)"
+            title="Delete task"
+          >
+            🗑️
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="tasks.length === 0">
+      <div class="empty-icon">📭</div>
+      <h3>No tasks found</h3>
+      <p>Try adjusting your filters or create a new task</p>
+      <button class="btn-primary" routerLink="/tasks/new">Create Task</button>
+    </div>
+  </div>
+</div>
+
