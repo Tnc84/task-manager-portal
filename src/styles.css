@@ -16,8 +16,8 @@ html, body {
 
 body {
   margin: 0;
-  background: #f5f6fa;
-  color: #2c3e50;
+  background: #0f0f1e;
+  color: #e0e0e0;
   line-height: 1.6;
 }
 
@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Links */
 a {
-  color: #667eea;
+  color: #8b9aff;
   text-decoration: none;
 }
 
@@ -49,16 +49,16 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #1a1a2e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #444;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #666;
 }
 
 /* Utility Classes */

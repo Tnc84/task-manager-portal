@@ -13,7 +13,7 @@
 
 .page-header h1 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: #f1f1f1;
   margin: 0;
 }
 
@@ -44,9 +44,9 @@
   gap: 1rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: white;
+  background: #1a1a2e;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .filter-group {
@@ -57,23 +57,25 @@
 
 .filter-group label {
   font-weight: 600;
-  color: #2c3e50;
+  color: #f1f1f1;
   font-size: 0.9rem;
 }
 
 .filter-input,
 .filter-select {
   padding: 0.75rem;
-  border: 1px solid #dfe6e9;
+  border: 1px solid #2c3e50;
   border-radius: 8px;
   font-size: 1rem;
+  background: #0f3460;
+  color: #e0e0e0;
   transition: border-color 0.2s;
 }
 
 .filter-input:focus,
 .filter-select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #8b9aff;
 }
 
 /* Tasks Grid */
@@ -84,10 +86,10 @@
 }
 
 .task-card {
-  background: white;
+  background: #1a1a2e;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
@@ -96,12 +98,12 @@
 
 .task-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
 }
 
 .task-card.completed {
   opacity: 0.7;
-  background: #f8f9fa;
+  background: #16213e;
 }
 
 .task-header {
@@ -176,18 +178,18 @@
 
 .task-body h3 {
   margin: 0 0 0.5rem 0;
-  color: #2c3e50;
+  color: #f1f1f1;
   font-size: 1.1rem;
 }
 
 .task-body h3.completed-text {
   text-decoration: line-through;
-  color: #95a5a6;
+  color: #7f8c8d;
 }
 
 .task-body p {
   margin: 0;
-  color: #7f8c8d;
+  color: #b0b0b0;
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -197,7 +199,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid #ecf0f1;
+  border-top: 1px solid #2c3e50;
 }
 
 .task-info {
@@ -205,7 +207,7 @@
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.85rem;
-  color: #7f8c8d;
+  color: #b0b0b0;
 }
 
 .due-date {
@@ -223,7 +225,7 @@
 }
 
 .owner-id {
-  color: #95a5a6;
+  color: #7f8c8d;
 }
 
 .task-actions {
@@ -253,9 +255,9 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
-  background: white;
+  background: #1a1a2e;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .empty-icon {
@@ -264,12 +266,12 @@
 }
 
 .empty-state h3 {
-  color: #2c3e50;
+  color: #f1f1f1;
   margin-bottom: 0.5rem;
 }
 
 .empty-state p {
-  color: #7f8c8d;
+  color: #b0b0b0;
   margin-bottom: 1.5rem;
 }
 

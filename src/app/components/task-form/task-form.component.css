@@ -5,27 +5,27 @@
 }
 
 .form-card {
-  background: white;
+  background: #1a1a2e;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .form-header {
   text-align: center;
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 2px solid #2c3e50;
 }
 
 .form-header h1 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: #f1f1f1;
   margin: 0 0 0.5rem 0;
 }
 
 .form-header p {
-  color: #7f8c8d;
+  color: #b0b0b0;
   margin: 0;
 }
 
@@ -37,7 +37,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #f1f1f1;
   font-size: 0.95rem;
 }
 
@@ -48,17 +48,19 @@
 .form-control {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #dfe6e9;
+  border: 2px solid #2c3e50;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
+  background: #0f3460;
+  color: #e0e0e0;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-control:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #8b9aff;
+  box-shadow: 0 0 0 3px rgba(139, 154, 255, 0.2);
 }
 
 .form-control.invalid {
@@ -94,7 +96,7 @@ textarea.form-control {
 }
 
 .checkbox-group {
-  background: #f8f9fa;
+  background: #0f3460;
   padding: 1rem;
   border-radius: 8px;
 }
@@ -119,7 +121,7 @@ textarea.form-control {
   justify-content: flex-end;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid #ecf0f1;
+  border-top: 2px solid #2c3e50;
 }
 
 .btn-primary,
@@ -152,12 +154,12 @@ textarea.form-control {
 }
 
 .btn-secondary {
-  background: #ecf0f1;
-  color: #2c3e50;
+  background: #2c3e50;
+  color: #e0e0e0;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: #dfe6e9;
+  background: #3a4d65;
   transform: translateY(-2px);
 }
 

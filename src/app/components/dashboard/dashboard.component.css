@@ -11,12 +11,12 @@
 
 .dashboard-header h1 {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #f1f1f1;
   margin-bottom: 0.5rem;
 }
 
 .dashboard-header p {
-  color: #7f8c8d;
+  color: #b0b0b0;
   font-size: 1.1rem;
 }
 
@@ -29,19 +29,19 @@
 }
 
 .stat-card {
-  background: white;
+  background: #1a1a2e;
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
 .stat-icon {
@@ -52,12 +52,12 @@
 .stat-content h3 {
   font-size: 2rem;
   margin: 0;
-  color: #2c3e50;
+  color: #f1f1f1;
 }
 
 .stat-content p {
   margin: 0;
-  color: #7f8c8d;
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .quick-actions h2 {
-  color: #2c3e50;
+  color: #f1f1f1;
   margin-bottom: 1.5rem;
 }
 
@@ -121,10 +121,10 @@
 
 /* Recent Tasks */
 .recent-tasks {
-  background: white;
+  background: #1a1a2e;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .section-header {
@@ -135,7 +135,7 @@
 }
 
 .section-header h2 {
-  color: #2c3e50;
+  color: #f1f1f1;
   margin: 0;
 }
 
@@ -161,13 +161,13 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid #ecf0f1;
+  border: 1px solid #2c3e50;
   border-radius: 8px;
   transition: background-color 0.2s;
 }
 
 .task-item:hover {
-  background-color: #f8f9fa;
+  background-color: #0f3460;
 }
 
 .task-status {
@@ -186,18 +186,18 @@
 
 .task-details h4 {
   margin: 0 0 0.25rem 0;
-  color: #2c3e50;
+  color: #f1f1f1;
   font-size: 1rem;
 }
 
 .task-details h4.completed-text {
   text-decoration: line-through;
-  color: #95a5a6;
+  color: #7f8c8d;
 }
 
 .task-details p {
   margin: 0;
-  color: #7f8c8d;
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
@@ -233,13 +233,13 @@
 
 .due-date {
   font-size: 0.85rem;
-  color: #7f8c8d;
+  color: #b0b0b0;
 }
 
 .empty-state {
   text-align: center;
   padding: 3rem;
-  color: #95a5a6;
+  color: #7f8c8d;
 }
 
 /* Responsive Design */
